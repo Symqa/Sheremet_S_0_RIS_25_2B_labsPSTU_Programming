@@ -29,3 +29,22 @@
 
 [Первый вид текста с подсказкой](https://www.edsd.ru/files/pdf/GOST-19.701-90.-Shemy-algoritmov-programm-dannyh-i-sistem.-Uslovnye-Oboznacheniya-i-pravila-vypolneniya.pdf "Да")
 
+## Картинка
+![img](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-lcUko76wB7A--sbdd4j3oV8VXc1e1hUHdg&s)
+
+# Код
+``` c++
+#include <iostream>
+int main() {
+  return 0;
+}
+```
+
+# Таблица
+| Один | Два |
+
+|:Три:|:Четыре:| <- | - | ---- |
+
+# Экранирование спец символов
+
+\#
