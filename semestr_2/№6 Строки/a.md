@@ -1,1 +1,1 @@
-![.](img/block_shchem.png)
+![.](img/block_schem.png)
