@@ -7,9 +7,9 @@ double f(double &x) {
 	return exp(x);
 }
 
-double Sn(const int &N, double &x, double start_value) {
-	double a_n = start_value;
-	double s = start_value;
+double Sn(int &N, double &x) {
+	double a_n = x;
+	double s = x;
 	for (int i = 1; i <= N; i++) {
 		a_n = (a_n * x / i);
 		s += a_n;
@@ -31,25 +31,17 @@ double Sn(double &x, double start_value) {
 	return 0;
 }
 int main() {
-	const int N = 15, k = 10;
-	double a = 1, b = 2;
-	double step = (b-a)/k;
-	double x = a;
+	int n;
+	double x;
+	setlocale(LC_ALL, "ru");
+	cout << "¬ведите N: ";
+	cin >> n;
+	cout << "¬ведите x: ";
+	cin >> x;
 	setlocale(LC_ALL, "ru");
 
-	cout << endl << "a)" << endl;
-
-	while (x <= b + 1e-12) {
-		cout << "x=" << x << ": " << "f(x)=" << f(x) << ' ' << "S=" << Sn(N, x, 1) << endl;
-		x+=step;
-	}
-	x = a;
-	cout << endl << "б)" << endl;
-	while (x <= b + 1e-12) {
-		cout << "x=" << x << ": " << "f(x)=" << f(x) << ' ';
-		Sn(x, 1);
-		x+=step;
-	}
-	cin >> a;
+	cout << "x=" << x << ": " << "f(x)=" << f(x) << ' ' << "S=" << Sn(n, x) << endl;
+	
+	cin >> x;
 	return 0;
 }
