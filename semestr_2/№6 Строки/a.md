@@ -1,1 +1,1 @@
-![пк](block_schem.png)
+![.](img/block_shchem.png)
