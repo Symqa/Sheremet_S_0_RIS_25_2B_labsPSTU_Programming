@@ -1,0 +1,1 @@
+![пк](block_schem.png)
