@@ -1,1 +1,0 @@
-![.](img/block_schem.png)
