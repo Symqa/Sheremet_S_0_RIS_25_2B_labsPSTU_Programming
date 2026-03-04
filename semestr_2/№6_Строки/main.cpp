@@ -30,7 +30,7 @@ int main() {
                 if (c >= '0' && c <= '9') {
                     haveNumbers = true;
                 }
-                else if ((c >= 192 && c <= 255) || c == 184 || c == 168) { // для русских букв в CP1251 (не для UTF-8)
+                else if ((c >= 192 && c <= 255) || c == 184 || c == 168) {
                     haveLetters = true;
                 }
                 else if (c >= 'A' && c <= 'z') {
