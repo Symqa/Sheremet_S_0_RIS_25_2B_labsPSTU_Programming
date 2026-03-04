@@ -4,7 +4,7 @@
 using namespace std;
 
 double f(double &x) {
-	return exp(x);
+	return sin(x);
 }
 
 double Sn(int &N, double &x) {
