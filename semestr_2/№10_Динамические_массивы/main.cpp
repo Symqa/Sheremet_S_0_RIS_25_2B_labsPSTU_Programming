@@ -1,124 +1,111 @@
 #include <iostream>
-#include <stdlib.h>
 #include <clocale>
-#include <ctime>
+#include <stdlib.h>
 using namespace std;
-// При поиске максимального элемента возвращать индексы, которые идут под снос
-void fillArr(int** arr, int columns, int rows) {
-	for (int i = 0; i < rows; i++) {
-		for (int j = 0; j < columns; j++) {
-			arr[i][j] = rand()%10;
-		}
-	}
-}
 
-void printArr(int** arr, int columns, int rows) {
-	cout << endl << "Массив:" << endl;
+
+void printArr(int **arr, int rows, int cols) {
 	for (int i = 0; i < rows; i++) {
-		for (int j = 0; j < columns; j++) {
+		for (int j = 0; j < cols; j++) {
 			cout << arr[i][j] << '\t';
 		}
 		cout << endl;
 	}
-	cout << endl;
 }
 
-int getMax(int **arr, int columns, int rows) {
+int getMax(int** arr, int rows, int cols) {
 	int max = arr[0][0];
-	int count = 1;
 	for (int i = 0; i < rows; i++) {
-		for (int j = 0; j < columns; j++) {
+		for (int j = 0; j < cols; j++) {
 			if (arr[i][j] > max) {
 				max = arr[i][j];
-				count = 1;
-			}
-			else if (arr[i][j] == max) {
-				count++;
 			}
 		}
 	}
-	cout << endl << "Количество максимальных элементов: " << count << endl;
 	return max;
 }
 
-void deleteArr(int **&arr, int& columns, int& rows) {
-	for (int i = 0; i < rows; i++) {
-		delete[] arr[i];
-		arr[i] = nullptr;
-	}
-	delete[] arr;
-	arr = nullptr;
-}
-
-int** deleteRowAndColumn(int **arr, int& columns, int& rows, int& max_i, int& max_j) {
-
-	int **new_arr = new int*[rows-1];
-	for (int index = 0; index < rows-1; index++) {
-		new_arr[index] = new int[columns-1];
-	}
-	int shift_i = 0, shift_j = 0;
-	for (int i = 0; i < rows; i++) {
-		shift_j = 0;
-		for (int j = 0; j < columns; j++) {
-			if (i == max_i) {
-				shift_i++;
-				break;
-			}
-			else if (j == max_j) {
-				shift_j++;
-				continue;
-			}
-			else {
-				new_arr[i-shift_i][j-shift_j] = arr[i][j];
-			}
-		}
-	}
-	deleteArr(arr, columns, rows);
-	columns-=1;
-	rows-=1;
-	return new_arr;
-	
-}
-
 int main() {
-	int rows, columns, max;
-	setlocale(LC_ALL, "ru");
-	srand(time(nullptr));
+	setlocale(LC_ALL, "Russian");
 
-	cout << "Введите количество строк матрицы: ";
-	cin >> rows;
-	cout << endl;
+	// Размеры
+	int rows, cols;
+	cout << "Введите размеры массива (сначала строки, потом столбцы, через пробел): ";
+	cin >> rows >> cols;
 
-	int **arr = new int*[rows];
-	cout << "Введите размер каждой строки: ";
-	cin >> columns;
-	cout << endl;
-
+	// Создание основного массива
+	int **matrix = new int*[rows];
 	for (int i = 0; i < rows; i++) {
-		arr[i] = new int[columns];
+		matrix[i] = new int[cols];
 	}
-	fillArr(arr, columns, rows);
-	printArr(arr, columns, rows);
-	max = getMax(arr, columns, rows);
-	cout << "Максимальный элемент: " << max << endl;
 	
-	bool find_max;
-	while (getMax(arr, columns, rows) == max) {
-		find_max = false;
-		for (int i = 0; i < rows; i++) {
-			if (find_max) break;
-			for (int j = 0; j < columns; j++) {
-				if (arr[i][j] == max) {
-					arr = deleteRowAndColumn(arr, columns, rows, i, j);
-					find_max = true;
-					break;
-				}
+	// Заполнение случайными числами
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < cols; j++) {
+			matrix[i][j] = rand()%10;
+		}
+	}
+	cout << endl << "Исходный массив: " << endl;
+	printArr(matrix, rows, cols);
+
+	// Нахождение максимума
+	const int MAX = getMax(matrix, rows, cols);
+	cout << endl << "Максимальный элемент: " << MAX << endl;
+
+	// Создание новых bool массивов под индексы i и j
+	bool *indexesI = new bool[rows]();
+	bool *indexesJ = new bool[cols]();
+
+	// Заполнение новых bool массивов под индексы i и j, используя максимум
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < cols; j++) {
+			if (matrix[i][j] == MAX) {
+				indexesI[i] = true;
+				indexesJ[j] = true;
 			}
 		}
 	}
-	printArr(arr, columns, rows);
-	
 
-	cin >> rows;
+	// Нахождение новых размеров массива
+	int newRows = 0, newCols = 0;
+	for (int i = 0; i < rows; i++) if (!indexesI[i]) newRows++;
+	for (int j = 0; j < cols; j++) if (!indexesJ[j]) newCols++;
+
+	// Создание нового массива
+	int **new_matrix = new int*[rows];
+	for (int i = 0; i < newRows; i++) {
+		new_matrix[i] = new int[cols];
+	}
+	
+	// Заполнение массива, исходя из значений из bool массивов
+	int newI = 0;
+	for (int i = 0; i < rows; i++) {
+		if (indexesI[i]) continue;
+		int newJ = 0;
+
+		for (int j = 0; j < cols; j++) {
+			if (indexesJ[j]) continue;
+			new_matrix[newI][newJ] = matrix[i][j];
+			newJ++;
+		}
+		newI++;
+		
+	}
+
+	// Освобождение памяти и вывод нового массива
+	cout << endl; 
+	for (int i = 0; i < rows; i++) {
+		delete[] matrix[i];
+		matrix[i] = nullptr;
+	}
+	delete[] matrix;
+	matrix = nullptr;
+
+	cout << endl << "Новый массив: " << endl;
+	printArr(new_matrix, newRows, newCols);
+	delete[] indexesI;
+	delete[] indexesJ;
+	indexesI = nullptr;
+	indexesJ = nullptr;
 	return 0;
 }

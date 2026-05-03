@@ -1,0 +1,32 @@
+#include "List.h"
+#include "error.h"
+#include <iostream>
+using namespace std;
+
+int main() {
+    try {
+        List a;
+        cout << "List a: " << a;
+        cout << "Size: " << a() << endl;
+
+        int mas[] = { 10, 20, 30 };
+        List b(3, mas);
+        cout << "List b: " << b;
+        cout << "b[1] = " << b[1] << endl;
+        cout << "Size: " << b() << endl;
+
+        List c = b * 2;
+        cout << "b * 2 : " << c;
+
+        b[1];
+        cout << "b - 0 : " << (b - 0) << endl;
+
+        List d;
+        cin >> d;
+        cout << "You entered: " << d;
+    }
+    catch (error e) {
+        e.what();
+    }
+    return 0;
+}
