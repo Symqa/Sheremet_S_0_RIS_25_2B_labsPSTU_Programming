@@ -1,0 +1,31 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
+  <diagram name="Страница-1" id="uc137BIzeiLZhALgWKaU">
+    <mxGraphModel dx="1213" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="W_3Qr_2LuGhKvAOMzAdL-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Number" vertex="1">
+          <mxGeometry height="60" width="190" x="390" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="W_3Qr_2LuGhKvAOMzAdL-15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="+first : unsigned int = 1&lt;div&gt;+ second : double = 0.0&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="190" x="390" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="W_3Qr_2LuGhKvAOMzAdL-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="+ Number()&lt;div&gt;+ Init(in f: in s: double) : void&lt;/div&gt;&lt;div&gt;+ Read() : void&lt;/div&gt;&lt;div&gt;+ Show() : void {query}&lt;/div&gt;&lt;div&gt;+ mulpitply(in k: double) : double&lt;/div&gt;&lt;div&gt;+getValue() : double {query}&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="190" x="390" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="W_3Qr_2LuGhKvAOMzAdL-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="make_Number&lt;br&gt;(free func)" vertex="1">
+          <mxGeometry height="60" width="150" x="100" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="W_3Qr_2LuGhKvAOMzAdL-18" edge="1" parent="1" source="W_3Qr_2LuGhKvAOMzAdL-17" style="endArrow=none;html=1;strokeWidth=2;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" target="W_3Qr_2LuGhKvAOMzAdL-14" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="590" y="450" as="sourcePoint" />
+            <mxPoint x="640" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="W_3Qr_2LuGhKvAOMzAdL-19" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&amp;lt;&amp;lt;create&amp;gt;&amp;gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="290" y="230" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
